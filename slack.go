@@ -23,7 +23,7 @@ func generateMessage(items []item, base string) string {
 		message += "> - *" + item.Fields.Name + "* (proposed by " + item.Fields.Contact_Mail + ")\n"
 	}
 
-	message += "\n> _Click here:_ https://airtable.com/" + os.Getenv("AIRTABLE_BASE")
+	message += "> \n> _Click here:_ https://airtable.com/" + os.Getenv("AIRTABLE_BASE")
 
 	return message
 }
