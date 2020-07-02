@@ -20,7 +20,7 @@ func generateMessage(items []item, base string) string {
 	message := "*" + count + " new " + base + "* submitted to Airtable. Please have a look! 🤪\n> \n"
 
 	for _, item := range items {
-		message += "> - *" + item.Fields.Name + "* (proposed by " + item.Fields.Contact_Mail + ")\n"
+		message += "> - *" + item.Fields.Name + "* (proposed by " + item.Fields.ContactMail + ")\n"
 	}
 
 	message += "> \n> _Click here:_ https://airtable.com/" + os.Getenv("AIRTABLE_BASE")

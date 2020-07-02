@@ -10,4 +10,4 @@ services:
     #   - AIRTABLE_TABLES: ""
     #   - SLACK_WEBHOOK_URL: ""
     ports:
-      - "6060:8080"
+      - "6060:6060"
