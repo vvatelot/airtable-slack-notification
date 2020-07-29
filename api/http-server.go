@@ -1,4 +1,4 @@
-package main
+package api
 
 import (
 	"fmt"
@@ -6,15 +6,17 @@ import (
 	"net/http"
 	"os"
 	"time"
+
+	"github.com/vvatelot/airtable-slack-notify/thirdparty"
 )
 
-func requestLogger(targetMux http.Handler) http.Handler {
+// RequestLogger is a logging middleware for http request
+func RequestLogger(targetMux http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		start := time.Now()
 
 		targetMux.ServeHTTP(w, r)
 
-		// log request by who(IP address)
 		requesterIP := r.RemoteAddr
 
 		log.Printf(
@@ -27,7 +29,8 @@ func requestLogger(targetMux http.Handler) http.Handler {
 	})
 }
 
-func checkAllNewsHandler(w http.ResponseWriter, r *http.Request) {
+// CheckAirtableAllNewsHandler handle the /checknews route
+func CheckAirtableAllNewsHandler(w http.ResponseWriter, r *http.Request) {
 	query := r.URL.Query()
 	apiKey := query.Get("api_key")
 
@@ -37,7 +40,7 @@ func checkAllNewsHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	go checkAllNews()
+	go thirdparty.CheckAirableAllNews()
 	fmt.Fprintf(w, "")
 	log.Print("Call " + r.RequestURI)
 }

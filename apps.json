@@ -1,0 +1,9 @@
+{
+    "name": "airtable-slack-notify",
+    "options": {
+        "allow-unauthenticated": true,
+        "memory": "128Mi",
+        "cpu": "1",
+        "port": "6060"
+    }
+}

@@ -1,4 +1,4 @@
-package main
+package thirdparty
 
 import (
 	"encoding/json"
@@ -12,6 +12,9 @@ import (
 
 var httpClient http.Client
 
+// Bases are Airtable bases that are watched by tht bot
+var Bases []string
+
 type item struct {
 	AirtableID string `json:"id"`
 	Fields     struct {
@@ -24,7 +27,8 @@ type responseBody struct {
 	Records []item `json:"records"`
 }
 
-func initHTTPClient() {
+// InitAirtableHTTPClient intializes HTTP client to work with airtable
+func InitAirtableHTTPClient() {
 	tr := &http.Transport{
 		TLSHandshakeTimeout: 30 * time.Second,
 	}
@@ -67,8 +71,9 @@ func getNewItemsHTTPClient(table string) []item {
 	return r.Records
 }
 
-func checkAllNews() {
-	for _, base := range bases {
+// CheckAirableAllNews loops through all watched bases and process new items
+func CheckAirableAllNews() {
+	for _, base := range Bases {
 		newItems := getNewItemsHTTPClient(base)
 		if len(newItems) > 0 {
 			message := generateMessage(newItems, base)
