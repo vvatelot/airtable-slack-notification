@@ -25,4 +25,5 @@ Here are the environment variables that you have to set while using this project
 # Deploy to Google Cloud Run
 
 This bot can be easily deployed on [Google Cloud Run](https://cloud.google.com/run?hl=fr). Just click here:
+
 [![Run on Google Cloud](https://deploy.cloud.run/button.svg)](https://deploy.cloud.run)
