@@ -16,7 +16,7 @@ You need to have an airtable base with tables that you want to check. In your ta
 
 Here are the environment variables that you have to set while using this project:
 
-- `API_KEY`: API key that you will have to add to your request with `?x-api-key=API_KEY`. It is advised to use an UUID
+- `API_KEY`: API key that you will have to add to your request with `?api_key=API_KEY`. It is advised to use an UUID
 - `AIRTABLE_API_URL`: Default Airtable API URL
 - `AIRTABLE_API_KEY`: API Key to access Airtable API (https://support.airtable.com/hc/en-us/articles/219046777-How-do-I-get-my-API-key-)
 - `AIRTABLE_BASE`: ID of the Airtable Base
